@@ -27,7 +27,15 @@ class CompetitionAdapter implements CompetitionServiceInterface{
         return $response->json()["competitions"];
     }
     function getCompetitionById(int $id) : array{
-        return [];
+        $response = Http::withHeaders([
+            "X-Auth-Token" => $this->apiKey
+        ])->withOptions([
+            'verify' => false,
+        ])->get("{$this->baseUrl}/v4/competitions/{$id}");
+        if($response->failed()){
+            throw new Exception("Error on fetching data");
+        }
+        return $response->json();
     }
 
 }

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\V1\Competition;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApiResponse;
-use App\Http\Resources\CompetitionListResource;
+use App\Http\Resources\Competition\CompetitionListResource;
 use Core\Competition\Infrastructure\Controllers\GetAllCompetitionsController as CoreController;
-use Illuminate\Http\Request;
 
 class GetAllCompetitionsController extends Controller
 {
