@@ -24,7 +24,7 @@ class CompetitionAdapter implements CompetitionServiceInterface{
         if($response->failed()){
             throw new Exception("Error on fetching data");
         }
-        return $response->json();
+        return $response->json()["competitions"];
     }
     function getCompetitionById(int $id) : array{
         return [];
