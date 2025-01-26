@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ApiResponse;
 use Illuminate\Http\Request;
 use Core\Player\Infrastructure\Controllers\GetAllPlayersController as CoreController;
-class GetAllTeamsController extends Controller
+class GetAllPlayersController extends Controller
 {
     private $controller;
 
