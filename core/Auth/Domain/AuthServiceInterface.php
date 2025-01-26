@@ -5,5 +5,5 @@ interface AuthServiceInterface{
 
     function signin(string $email, string $password) : array;
 
-    function register();
+    function register(UserAuth $userAuth) : bool;
 }

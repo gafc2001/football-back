@@ -7,6 +7,6 @@ interface UserRepositoryInterface{
 
     function findUserByEmail(string $email) : User;
 
-    function save(UserAuth $userAuth) : void;
+    function save(UserAuth $userAuth) : bool;
 
 }

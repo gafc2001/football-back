@@ -23,14 +23,13 @@ class AuthService implements AuthServiceInterface{
         if(!$userAuth->verifyPassword($password)){
             throw new Exception("Invalid credentials");
         }
-        error_log(json_encode($user));
         $token = $user->createToken($user->id);
         $result = new AuthResponse($token->accessToken,"Bearer",$user);
         return $result->response();
     }
 
-    function register(){
-
+    function register(UserAuth $userAuth) : bool{
+        return $this->userRepository->save($userAuth);
     }
 
     

@@ -17,14 +17,19 @@ class UserRepository implements UserRepositoryInterface{
         throw new Exception("User not found");
     }
 
-    public function save(UserAuth $userAuth) : void{
-        $defaultRole = Role::whereName('free')->first();
-        User::create([
-            'name' => $userAuth->getName(),
-            'email' => $userAuth->getEmail(),
-            'password' => $userAuth->getPassword(),
-            'role_id' => $defaultRole->id,
-        ]);
+    public function save(UserAuth $userAuth) : bool{
+        try{
+            $defaultRole = Role::whereName('free')->first();
+            User::create([
+                'name' => $userAuth->getName(),
+                'email' => $userAuth->getEmail(),
+                'password' => $userAuth->getPassword(),
+                'role_id' => $defaultRole->id,
+            ]);
+            return true;
+        }catch(Exception $e){
+            return false;
+        }
     }
     
 
