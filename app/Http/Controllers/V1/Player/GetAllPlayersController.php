@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1\Player;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApiResponse;
+use App\Http\Resources\PlayerResource;
 use Illuminate\Http\Request;
 use Core\Player\Infrastructure\Controllers\GetAllPlayersController as CoreController;
 class GetAllPlayersController extends Controller
@@ -19,6 +20,7 @@ class GetAllPlayersController extends Controller
         $id = $request->team_id;
 
         $result = $this->controller->__invoke($id);
-        return new ApiResponse($result);
+        $data = PlayerResource::collection($result);
+        return new ApiResponse($data);
     }
 }
