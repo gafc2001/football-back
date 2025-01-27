@@ -2,6 +2,7 @@
 namespace Core\Player\Application\UseCases;
 
 use Core\Player\Domain\PlayerServiceInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class FetchAllPlayersUseCase{
 
@@ -12,7 +13,7 @@ class FetchAllPlayersUseCase{
         $this->playerService = $playerService;
     }
 
-    public function __invoke() : array
+    public function __invoke() : Collection
     {
         return $this->playerService->getAllPlayers();
     }
