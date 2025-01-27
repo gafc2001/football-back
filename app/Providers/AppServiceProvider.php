@@ -8,6 +8,8 @@ use Core\Auth\Infrastructure\AuthService;
 use Core\Auth\Infrastructure\UserRepository;
 use Core\Competition\Domain\CompetitionServiceInterface;
 use Core\Competition\Infrastructure\Adapters\CompetitionAdapter;
+use Core\Player\Domain\PlayerServiceInterface;
+use Core\Player\Infrastructure\Adapters\PlayerAdapter;
 use Core\Team\Domain\TeamServiceInterface;
 use Core\Team\Infrastructure\Adapters\TeamAdapter;
 use Illuminate\Support\ServiceProvider;
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TeamServiceInterface::class, TeamAdapter::class);
         $this->app->bind(AuthServiceInterface::class, AuthService::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(PlayerServiceInterface::class, PlayerAdapter::class);
     }
 
     /**
